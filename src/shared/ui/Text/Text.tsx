@@ -1,6 +1,6 @@
 type Props = {
   color?: "red" | "green" | "blue";
-  children: string; // children, key, htmlFor, style, className
+  children: string | number | (string | number)[]; // children, key, htmlFor, style, className
   // children: React.ReactNode;
 };
 
