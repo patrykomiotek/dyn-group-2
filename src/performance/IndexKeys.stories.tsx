@@ -8,13 +8,13 @@ export default {
 
 export const ReactKeysIndex = () => {
   const [items, setItems] = useState([
-    { id: useId(), name: "A", value: "pierwszy" },
-    { id: useId(), name: "B", value: "drugi" },
+    { id: useId(), name: "A", value: "first" },
+    { id: useId(), name: "B", value: "second" },
   ]);
   const newId = useId();
 
   const addItem = () => {
-    setItems([{ id: newId, name: "C", value: "trzeci" }, ...items]);
+    setItems([{ id: newId, name: "C", value: "third" }, ...items]);
   };
 
   return (

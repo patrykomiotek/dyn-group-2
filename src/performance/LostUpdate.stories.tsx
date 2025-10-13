@@ -14,9 +14,9 @@ export const ReactRefLostUpdate = () => {
 
   return (
     <>
-      <Text>
+      <div>
         values: A={countA}, B={countB.current}
-      </Text>
+      </div>
       <div className="flex">
         <Button
           onClick={() => {
