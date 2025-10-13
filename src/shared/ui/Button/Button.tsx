@@ -33,7 +33,7 @@ type Props = {
 
 export const Button = memo(
   ({
-    children,
+    children, // Text (string), <span>Text</span> -> React.ReactNode -> Object (span element with children Text)
     color = "clouds",
     bgColor = "midnightBlue",
     // onClick,

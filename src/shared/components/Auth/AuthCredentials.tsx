@@ -1,17 +1,26 @@
 import { Button } from "@/shared/ui";
 import { useState, type MouseEventHandler, useCallback } from "react";
+import { useAuthContext } from "./AuthContext";
 
 export const AuthCredentials = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const context = useAuthContext();
 
-  const handleToggle: MouseEventHandler<HTMLButtonElement> = useCallback(() => {
-    setIsLoggedIn((value) => !value);
-  }, []);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // const handleToggle: MouseEventHandler<HTMLButtonElement> = useCallback(() => {
+  //   setIsLoggedIn((value) => !value);
+  // }, []);
+  // const handleToggle: MouseEventHandler<HTMLButtonElement> = () => {
+  //   setIsLoggedIn((value) => !value);
+  // };
 
   return (
     <div>
-      <p>Is user logged in? {isLoggedIn ? "YES" : "NO"}</p>
-      <Button onClick={handleToggle}>Toggle</Button>
+      <p>Is user logged in? {context.isLoggedIn ? "YES" : "NO"}</p>
+      <Button onClick={context.toggle}>
+        Toggle
+        {/* <span>Toggle</span> */}
+      </Button>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { router } from "./routes";
 
 import { store } from "./store";
+import { AuthProvider } from "./shared/components/Auth/AuthContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,12 +23,10 @@ function App() {
       <div className="p-4">
         {/* <AuthContext> */}
 
-        {/* <AuthProvider> */}
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
           <ReactQueryDevtools initialIsOpen={true} />
         </QueryClientProvider>
-        {/* </AuthProvider> */}
       </div>
     </Provider>
   );
