@@ -49,6 +49,7 @@ export const Button = memo(
       </button>
     );
   }
+  // , (props) => label === 'yes' ? true : false
 );
 
 Button.displayName = "memo(Button)";
