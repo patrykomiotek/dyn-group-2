@@ -3,6 +3,8 @@ import {
   createContext,
   useContext,
   useState,
+  useCallback,
+  useMemo,
   // type SetStateAction,
 } from "react";
 
@@ -21,11 +23,14 @@ const AuthContext = createContext<AuthContextProps | null>(null);
 const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const toggle = () => setIsLoggedIn((value) => !value);
-  const login = () => setIsLoggedIn(true);
-  const logout = () => setIsLoggedIn(false);
+  const toggle = useCallback(() => setIsLoggedIn((value) => !value), []);
+  const login = useCallback(() => setIsLoggedIn(true), []);
+  const logout = useCallback(() => setIsLoggedIn(false), []);
 
-  return { isLoggedIn, toggle, login, logout };
+  return useMemo(
+    () => ({ isLoggedIn, toggle, login, logout }),
+    [isLoggedIn, toggle, login, logout]
+  );
 };
 
 // 3 - external hook for components
