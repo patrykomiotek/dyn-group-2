@@ -6,16 +6,23 @@ export const Books = () => {
   const books = useBookStore((state) => state.books);
   const addBook = useBookStore((state) => state.addNewBook);
 
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [isbn, setIsbn] = useState("");
-
-  const handleSubmit: FormEventHandler = (event) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    console.log(event.currentTarget);
+    // console.log(event.currentTarget);
+
+    const form = event.currentTarget;
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    console.log("Form Data:", data);
 
     // addBook
-    addBook(title, author, isbn);
+    addBook(
+      data.title.toString(),
+      data.author.toString(),
+      data.isbn.toString()
+    );
   };
 
   return (
@@ -33,18 +40,9 @@ export const Books = () => {
       </div>
       <div>
         <form onSubmit={handleSubmit}>
-          <Input
-            label="Title"
-            onChange={(event) => setTitle(event.target.value)}
-          />
-          <Input
-            label="Author"
-            onChange={(event) => setAuthor(event.target.value)}
-          />
-          <Input
-            label="ISBN"
-            onChange={(event) => setIsbn(event.target.value)}
-          />
+          <Input label="Title" />
+          <Input label="Author" />
+          <Input label="ISBN" />
           <Button type="submit">Submit</Button>
         </form>
       </div>
