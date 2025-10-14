@@ -4,28 +4,35 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "../../../shared/ui";
 import { createProductSchema, type CreateProductDto } from "../types";
 import { crateProduct } from "../services/products";
+import { useCreateProduct } from "../hooks/useCreateProduct";
 
 type Props = {
   onSubmit: () => void;
 };
 
 export function CreateProductQuery({ onSubmit }: Props) {
-  const { register, handleSubmit, formState } = useForm<CreateProductDto>({
-    resolver: zodResolver(createProductSchema),
-  });
+  const { register, handleSubmit, formState, reset } =
+    useForm<CreateProductDto>({
+      resolver: zodResolver(createProductSchema),
+    });
+
+  const mutation = useCreateProduct();
 
   const onFormSubmit: SubmitHandler<CreateProductDto> = async (data) => {
     // console.log(data);
-    try {
-      await crateProduct(data);
-      onSubmit();
-      // react-toastify
-      // navigate("/products");
-      // push("/products")
-      // router.push("/products")
-    } catch {
-      // display error message
-    }
+
+    mutation.mutate(data, {
+      onSuccess: (newProduct) => {
+        console.log("Product created successfully: ", newProduct);
+        reset();
+        // toast.success('Success!')
+        // navigate("/products")
+      },
+      onError: (error) => {
+        // toast.error('Oh no!')
+        console.error("Failed to create product: ", error);
+      },
+    });
   };
 
   const { errors, isValid, isSubmitted, isSubmitting } = formState;
