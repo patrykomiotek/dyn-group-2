@@ -58,12 +58,24 @@ export const Stepper = () => {
 
   const handleKeyboardDown: KeyboardEventHandler<HTMLInputElement> =
     useCallback((event) => {
+      // throw new Error("Stepper Error");
+
       const key = event.key;
       const value = parseInt(event.currentTarget.value, 10);
       if (key === "Enter") {
         dispatch({ type: ActionType.SET, payload: value });
       }
     }, []);
+
+  // throw new Error("Stepper Error");
+
+  const renderButton = () => {
+    return (
+      <div>
+        <button>Click me</button>
+      </div>
+    );
+  };
 
   return (
     <div className="">
@@ -75,6 +87,7 @@ export const Stepper = () => {
       <div>
         <Input label="Number" type="number" onKeyDown={handleKeyboardDown} />
       </div>
+      {renderButton()}
     </div>
   );
 };

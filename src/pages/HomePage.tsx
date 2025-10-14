@@ -8,6 +8,7 @@ import { Books } from "@/features/books/Books";
 import { EmployeeList } from "@/features/employees/EmployeeList";
 import { AuthInfo } from "@/shared/components/Auth/AuthInfo";
 import { DataTable } from "@/shared/components/DataTable/DataTable";
+import { ErrorBoundary } from "@/shared/components/ErrorBoundary/ErrorBoundary";
 import { Stepper } from "@/shared/components/Stepper";
 import { StepperRedux } from "@/shared/components/StepperRedux";
 import { ValueCollector } from "@/shared/components/ValueCollector";
@@ -16,17 +17,19 @@ export function HomePage() {
   return (
     <div className="space-y-4">
       <h1 className="text-3xl">Home Page</h1>
-      <EmployeeList />
+      {/* <EmployeeList /> */}
       {/* <Books /> */}
       {/* <StepperRedux /> */}
       {/* <ValueCollector /> */}
       {/* <DataTable /> */}
       {/* <PostsList /> */}
-      {/* <AuthInfo /> */}
+      <AuthInfo />
       {/* <Stepper /> */}
-      {/* <Stepper />
-      <ViewPort />
-      <Counter /> */}
+      <ErrorBoundary fallback={<p>Stepper error</p>}>
+        <Stepper />
+      </ErrorBoundary>
+      {/*<ViewPort />
+      <Counter />*/}
     </div>
   );
 }
