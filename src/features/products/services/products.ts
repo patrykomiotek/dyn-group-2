@@ -22,5 +22,5 @@ export const crateProduct = async (data: CreateProductDto) => {
     records: [{ fields: data }],
   });
 
-  return response;
+  return response.data;
 };
