@@ -6,6 +6,9 @@ export const fetchProducts = async () => {
   const response = await api.get<ApiListResponse<ProductDto>>("/products");
 
   return response.data.records;
+
+  // fetch('/products')
+  // then(response => response.json())
 };
 
 export const fetchProduct = async (id: string | undefined) => {

@@ -32,6 +32,9 @@ export function ProductsListPage() {
   //   loadData();
   // }, []);
 
+  // 1) use create product form here - add form and try to refetch new data
+  // 2) we will use mutations + optimistic updates
+
   return (
     <div className="space-y-4">
       <h1 className="text-3xl">Products List</h1>
