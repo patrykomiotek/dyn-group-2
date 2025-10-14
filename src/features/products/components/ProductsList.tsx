@@ -9,9 +9,9 @@ type Props = {
 };
 
 export function ProductList({ data }: Props) {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  const handleAddToBasket = (product: ProductDto) => dispatch(add(product));
+  // const handleAddToBasket = (product: ProductDto) => dispatch(add(product));
 
   return (
     <div>
@@ -21,7 +21,8 @@ export function ProductList({ data }: Props) {
             <Link to={`/products/${elem.id}`} className="text-blue-600">
               {elem.fields.name}
             </Link>
-            <Button onClick={() => handleAddToBasket(elem)}>+</Button>
+            {/* <Button onClick={() => handleAddToBasket(elem)}>+</Button> */}
+            <Button onClick={() => null}>+</Button>
           </h2>
           <p>{elem.fields.description}</p>
         </div>
