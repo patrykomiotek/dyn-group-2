@@ -19,16 +19,16 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <Provider store={store}>
-      <div className="p-4">
-        {/* <AuthContext> */}
+    // <Provider store={store}>
+    <div className="p-4">
+      {/* <AuthContext> */}
 
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-          <ReactQueryDevtools initialIsOpen={true} />
-        </QueryClientProvider>
-      </div>
-    </Provider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </QueryClientProvider>
+    </div>
+    // </Provider>
   );
 }
 

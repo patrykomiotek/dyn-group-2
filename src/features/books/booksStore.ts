@@ -10,3 +10,37 @@ export interface Book {
   author: string;
   isbn: string;
 }
+type BookWithoutId = Omit<Book, "id">;
+
+interface BookStore {
+  books: Book[];
+  addNewBook: (
+    title: Book["title"],
+    author: Book["author"],
+    isbn: Book["isbn"]
+  ) => void;
+}
+
+export const useBookStore = create<BookStore>()(
+  devtools((set) => ({
+    books: [],
+
+    // addNewBook(book: BookWithoutId)
+    addNewBook: (
+      title: Book["title"],
+      author: Book["author"],
+      isbn: Book["isbn"]
+    ) =>
+      set((state) => ({
+        books: [
+          ...state.books,
+          {
+            id: uuidv4(),
+            title,
+            author,
+            isbn,
+          },
+        ],
+      })),
+  }))
+);

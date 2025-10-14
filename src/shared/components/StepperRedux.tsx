@@ -1,4 +1,4 @@
-import { useReducer, useCallback, type KeyboardEventHandler } from "react";
+import { useCallback, type KeyboardEventHandler } from "react";
 import { Button, Input } from "../ui";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import {

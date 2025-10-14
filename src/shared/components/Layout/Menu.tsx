@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Route } from "../../../routes";
-import { useAppSelector } from "@/shared/hooks/redux";
+// import { useAppSelector } from "@/shared/hooks/redux";
 
 export function Menu() {
-  const numberOfProducts = useAppSelector(
-    (state) => state.basket.products.length
-  );
+  // const numberOfProducts = useAppSelector(
+  //   (state) => state.basket.products.length
+  // );
 
   return (
     <nav>
@@ -35,7 +35,7 @@ export function Menu() {
             Login
           </Link>
         </li>
-        <li>Products: {numberOfProducts}</li>
+        {/* <li>Products: {numberOfProducts}</li> */}
       </ul>
     </nav>
   );
