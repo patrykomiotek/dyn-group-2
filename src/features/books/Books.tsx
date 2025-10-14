@@ -18,11 +18,7 @@ export const Books = () => {
     console.log("Form Data:", data);
 
     // addBook
-    addBook(
-      data.title.toString(),
-      data.author.toString(),
-      data.isbn.toString()
-    );
+    addBook(data.title as string, data.author as string, data.isbn as string);
   };
 
   return (
@@ -40,9 +36,9 @@ export const Books = () => {
       </div>
       <div>
         <form onSubmit={handleSubmit}>
-          <Input label="Title" />
-          <Input label="Author" />
-          <Input label="ISBN" />
+          <Input label="Title" name="title" required />
+          <Input label="Author" name="author" required />
+          <Input label="ISBN" name="isbn" required />
           <Button type="submit">Submit</Button>
         </form>
       </div>
