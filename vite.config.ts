@@ -9,7 +9,15 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vite.dev/config/
 const viteConfig = defineViteConfig({
-  plugins: [tailwindcss(), react(), tsconfigPaths()],
+  plugins: [
+    tailwindcss(),
+    tsconfigPaths(),
+    react({
+      babel: {
+        plugins: ["babel-plugin-react-compiler"],
+      },
+    }),
+  ],
 });
 
 const vitestConfig = defineVitestConfig({

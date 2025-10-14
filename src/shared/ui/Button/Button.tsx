@@ -31,7 +31,9 @@ type Props = {
 
 // export const Button = () => {}
 
-export const Button = memo(
+// export const Button = memo(
+export const Button =
+  () =>
   ({
     children, // Text (string), <span>Text</span> -> React.ReactNode -> Object (span element with children Text)
     color = "clouds",
@@ -48,8 +50,8 @@ export const Button = memo(
         {children}
       </button>
     );
-  }
-  // , (props) => label === 'yes' ? true : false
-);
+  };
+// , (props) => label === 'yes' ? true : false
+// );
 
-Button.displayName = "memo(Button)";
+// Button.displayName = "memo(Button)";
