@@ -24,3 +24,9 @@ export const crateProduct = async (data: CreateProductDto) => {
 
   return response.data;
 };
+
+export const removeProduct = async (id: ProductDto["id"]) => {
+  const response = await api.delete(`/products/${id}`);
+
+  return response.data;
+};
