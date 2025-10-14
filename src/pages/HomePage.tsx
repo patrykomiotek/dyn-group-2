@@ -7,17 +7,18 @@
 import { AuthInfo } from "@/shared/components/Auth/AuthInfo";
 import { DataTable } from "@/shared/components/DataTable/DataTable";
 import { Stepper } from "@/shared/components/Stepper";
+import { ValueCollector } from "@/shared/components/ValueCollector";
 
 export function HomePage() {
   return (
     <div className="space-y-4">
       <h1 className="text-3xl">Home Page</h1>
-      <DataTable />
+      <ValueCollector />
+      {/* <DataTable /> */}
       {/* <PostsList /> */}
       {/* <AuthInfo /> */}
       {/* <Stepper /> */}
       {/* <Stepper />
-      <ValueCollector />
       <ViewPort />
       <Counter /> */}
     </div>
