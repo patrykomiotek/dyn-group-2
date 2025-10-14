@@ -1,23 +1,26 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
 
 import { Button, Input } from "../../../shared/ui";
 import { createProductSchema, type CreateProductDto } from "../types";
 import { crateProduct } from "../services/products";
 
-export function CreateProduct() {
+type Props = {
+  onSubmit: () => void;
+};
+
+export function CreateProductQuery({ onSubmit }: Props) {
   const { register, handleSubmit, formState } = useForm<CreateProductDto>({
     resolver: zodResolver(createProductSchema),
   });
-  const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<CreateProductDto> = async (data) => {
+  const onFormSubmit: SubmitHandler<CreateProductDto> = async (data) => {
     // console.log(data);
     try {
       await crateProduct(data);
+      onSubmit();
       // react-toastify
-      navigate("/products");
+      // navigate("/products");
       // push("/products")
       // router.push("/products")
     } catch {
@@ -28,7 +31,7 @@ export function CreateProduct() {
   const { errors, isValid, isSubmitted, isSubmitting } = formState;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onFormSubmit)}>
       {isSubmitted && !isValid && <p className="text-red-500">Invalid form</p>}
 
       <Input label="Name" error={errors.name} {...register("name")} />
