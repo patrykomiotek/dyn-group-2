@@ -7,14 +7,19 @@ import {
   type EmployeeSlice,
   useEmployeeSlice,
 } from "@/features/employees/employeeSlice";
+import {
+  type CountSlice,
+  useCountSlice,
+} from "@/features/basket/basketZustandSlice";
 
-export type CombinedStore = BookSlice & EmployeeSlice;
+export type CombinedStore = BookSlice & EmployeeSlice & CountSlice;
 
 export const useCombinedStore = create<CombinedStore>()(
   devtools(
     (...args) => ({
       ...useBookSlice(...args),
       ...useEmployeeSlice(...args),
+      ...useCountSlice(...args),
     }),
     {
       name: "combined-store",

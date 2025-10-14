@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { Route } from "../../../routes";
+import { useCombinedStore } from "combinedStore";
 // import { useAppSelector } from "@/shared/hooks/redux";
 
 export function Menu() {
   // const numberOfProducts = useAppSelector(
   //   (state) => state.basket.products.length
   // );
+  const numberOfProducts = useCombinedStore((state) => state.count);
 
   return (
     <nav>
@@ -35,7 +37,7 @@ export function Menu() {
             Login
           </Link>
         </li>
-        {/* <li>Products: {numberOfProducts}</li> */}
+        <li>Items: {numberOfProducts}</li>
       </ul>
     </nav>
   );
