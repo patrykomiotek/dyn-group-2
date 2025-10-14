@@ -3,14 +3,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button, Input } from "../../../shared/ui";
 import { createProductSchema, type CreateProductDto } from "../types";
-import { crateProduct } from "../services/products";
 import { useCreateProduct } from "../hooks/useCreateProduct";
+import { toast } from "react-toastify";
 
-type Props = {
-  onSubmit: () => void;
-};
-
-export function CreateProductQuery({ onSubmit }: Props) {
+export function CreateProductQuery() {
   const { register, handleSubmit, formState, reset } =
     useForm<CreateProductDto>({
       resolver: zodResolver(createProductSchema),
@@ -25,11 +21,11 @@ export function CreateProductQuery({ onSubmit }: Props) {
       onSuccess: (newProduct) => {
         console.log("Product created successfully: ", newProduct);
         reset();
-        // toast.success('Success!')
+        toast.success("Success!");
         // navigate("/products")
       },
       onError: (error) => {
-        // toast.error('Oh no!')
+        toast.error("Oh no!");
         console.error("Failed to create product: ", error);
       },
     });

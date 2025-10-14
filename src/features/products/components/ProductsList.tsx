@@ -24,10 +24,12 @@ export function ProductList({ data }: Props) {
       {data.map((elem) => (
         <div key={elem.id} className="space-y-6 mb-4">
           <h2 className="text-2xl">
-            <Link to={`/products/${elem.id}`} className="text-blue-600">
-              {elem.fields.name}
-            </Link>
-            <Button onClick={handleAddToBasket}>+</Button>
+            <div className="flex gap-2">
+              <Link to={`/products/${elem.id}`} className="text-blue-600">
+                {elem.fields.name}
+              </Link>
+              <Button onClick={handleAddToBasket}>+</Button>
+            </div>
           </h2>
           <p>{elem.fields.description}</p>
         </div>

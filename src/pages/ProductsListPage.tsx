@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "@/features/products/services/products";
 import { ProductList } from "@/features/products/components/ProductsList";
 import type { ProductDto } from "@/features/products/types";
-import { CreateProduct } from "@/features/products/components/CreateProduct";
 import { CreateProductQuery } from "@/features/products/components/CreateProductQuery";
 
 export function ProductsListPage() {
@@ -37,22 +36,18 @@ export function ProductsListPage() {
   // 1) use create product form here - add form and try to refetch new data
   // 2) we will use mutations + optimistic updates
 
-  const handleSubmit = () => {
-    refetch();
-  };
-
   return (
     <div className="space-y-4">
       <h1 className="text-3xl">Products List</h1>
 
-      <div className="flex gap-4">
-        <div>
+      <div className="flex">
+        <div className="w-1/2">
           {isLoading && <p>Loading...</p>}
           {isError && <p>Component error</p>}
           {data && <ProductList data={data} />}
         </div>
-        <div>
-          <CreateProductQuery onSubmit={handleSubmit} />
+        <div className="w-1/2">
+          <CreateProductQuery />
         </div>
       </div>
     </div>
