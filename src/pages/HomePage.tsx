@@ -7,13 +7,15 @@
 import { AuthInfo } from "@/shared/components/Auth/AuthInfo";
 import { DataTable } from "@/shared/components/DataTable/DataTable";
 import { Stepper } from "@/shared/components/Stepper";
+import { StepperRedux } from "@/shared/components/StepperRedux";
 import { ValueCollector } from "@/shared/components/ValueCollector";
 
 export function HomePage() {
   return (
     <div className="space-y-4">
       <h1 className="text-3xl">Home Page</h1>
-      <ValueCollector />
+      <StepperRedux />
+      {/* <ValueCollector /> */}
       {/* <DataTable /> */}
       {/* <PostsList /> */}
       {/* <AuthInfo /> */}
