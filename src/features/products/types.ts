@@ -9,7 +9,7 @@ export const createProductSchema = z.object({
 export type CreateProductDto = z.infer<typeof createProductSchema>;
 
 export interface ProductDto {
-  id: number;
+  id: string;
   fields: {
     name: string;
     description: string;

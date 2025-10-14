@@ -4,6 +4,8 @@ import { Button } from "@/shared/ui";
 // import { add } from "@/features/basket/basketSlice";
 import type { ProductDto } from "../types";
 import { useCombinedStore } from "combinedStore";
+import { useDeleteProduct } from "../hooks/useDeleteProduct";
+import { toast } from "react-toastify";
 
 type Props = {
   data: ProductDto[];
@@ -11,12 +13,24 @@ type Props = {
 
 export function ProductList({ data }: Props) {
   const addNewItem = useCombinedStore((state) => state.addNewItem);
+  const deleteMutation = useDeleteProduct();
   // const dispatch = useAppDispatch();
 
   // const handleAddToBasket = (product: ProductDto) => dispatch(add(product));
 
   const handleAddToBasket = () => {
     addNewItem();
+  };
+
+  const handleRemove = (id: ProductDto["id"]) => {
+    deleteMutation.mutate(id, {
+      onSuccess: () => {
+        toast.success("Success!");
+      },
+      onError: () => {
+        toast.error("Error!");
+      },
+    });
   };
 
   return (
@@ -29,6 +43,7 @@ export function ProductList({ data }: Props) {
                 {elem.fields.name}
               </Link>
               <Button onClick={handleAddToBasket}>+</Button>
+              <Button onClick={() => handleRemove(elem.id)}>Remove</Button>
             </div>
           </h2>
           <p>{elem.fields.description}</p>

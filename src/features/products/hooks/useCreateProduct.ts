@@ -17,7 +17,7 @@ export const useCreateProduct = () => {
 
       queryClient.setQueryData<ProductDto[]>(["products-list"], (old) => {
         const tmpProduct: ProductDto = {
-          id: -Date.now(),
+          id: Date.now().toString(),
           fields: newProduct,
         };
         return old ? [tmpProduct, ...old] : [tmpProduct];
