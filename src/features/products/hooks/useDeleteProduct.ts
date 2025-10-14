@@ -17,7 +17,7 @@ export const useDeleteProduct = () => {
         queryKey,
       ]);
 
-      // optimastically remove the product
+      // optimistically remove the product
       queryClient.setQueryData<ProductDto[]>([queryKey], (old) => {
         if (!old) {
           return old;

@@ -27,6 +27,7 @@ export const useCreateProduct = () => {
     },
 
     onSuccess: (newProduct: ProductDto) => {
+      // should we invalidate
       queryClient.invalidateQueries({ queryKey: ["products-list"] });
 
       queryClient.invalidateQueries({
