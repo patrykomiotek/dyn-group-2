@@ -12,6 +12,14 @@ type Props = {
   error?: FieldError;
 } & ComponentPropsWithRef<"input">;
 
+// React 16, 17, 18, 19
+// export const Input = forwardRef(
+//   (
+//     { label, id, error, ...rest }: Props,
+//     ref: ForwardedRef<HTMLInputElement>
+//   ) => {
+
+// From React 19
 export const Input = ({ label, id, error, ref, ...rest }: Props) => {
   const reactId = useId();
   const componentId = id ? id : reactId;

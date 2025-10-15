@@ -9,6 +9,7 @@ import { EmployeeList } from "@/features/employees/EmployeeList";
 import { AuthInfo } from "@/shared/components/Auth/AuthInfo";
 import { DataTable } from "@/shared/components/DataTable/DataTable";
 import { ErrorBoundary } from "@/shared/components/ErrorBoundary/ErrorBoundary";
+import { FormRefs } from "@/shared/components/FormRefs";
 import { Stepper } from "@/shared/components/Stepper";
 import { StepperRedux } from "@/shared/components/StepperRedux";
 import { ValueCollector } from "@/shared/components/ValueCollector";
@@ -16,10 +17,15 @@ import { ResponsiveDashboard } from "exercises/Exercise1_useLayoutEffect";
 import { CustomForm } from "exercises/Exercise2_useImperativeHandle";
 
 export function HomePage() {
+  const handleSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="space-y-4">
       <h1 className="text-3xl">Home Page</h1>
       <CustomForm />
+      {/* <FormRefs onSubmit={handleSubmit} /> */}
       {/* <ResponsiveDashboard /> */}
       {/* <Stepper /> */}
       {/* <EmployeeList /> */}
