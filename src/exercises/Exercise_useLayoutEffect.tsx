@@ -16,7 +16,7 @@ export function ResponsiveDashboard() {
   const [dimensions, setDimensions] = useState<ContainerDimensions[]>([]);
   const [isResizing, setIsResizing] = useState(false);
 
-  const containerRefs = useRef<(HTMLDivElement | null)[]>([null, null, null]);
+  const containerRefs = useRef<(HTMLDivElement | null)[]>([null]);
 
   // useCallback
   const updateDimensions = useCallback(() => {
@@ -54,11 +54,13 @@ export function ResponsiveDashboard() {
   const handleResize = () => {
     setIsResizing(true);
 
-    updateDimensions();
+    // updateDimensions();
+    // useDebounce(updateDimensions(), 300);
   };
 
   // TODO: Implement useLayoutEffect for measuring container
   // Hint: Measure the container on mount and window resize
+  // try to switch to useEffect to see flicker
   useLayoutEffect(() => {
     updateDimensions();
 
