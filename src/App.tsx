@@ -21,18 +21,18 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <SampleComponent />
-    // <Provider store={store}>
-    // <div className="p-4">
-    //   {/* <AuthContext> */}
+    // <SampleComponent />
+    <Provider store={store}>
+      <div className="p-4">
+        {/* <AuthContext> */}
 
-    //   <QueryClientProvider client={queryClient}>
-    //     <RouterProvider router={router} />
-    //     <ToastContainer />
-    //     <ReactQueryDevtools initialIsOpen={true} />
-    //   </QueryClientProvider>
-    // </div>
-    // </Provider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+          <ToastContainer />
+          <ReactQueryDevtools initialIsOpen={true} />
+        </QueryClientProvider>
+      </div>
+    </Provider>
   );
 }
 
