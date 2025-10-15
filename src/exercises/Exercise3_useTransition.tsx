@@ -72,6 +72,10 @@ export function UserManagement() {
   // TODO: Implement useTransition for non-urgent updates
   const [isPending, startTransition] = useTransition();
 
+  useEffect(() => {
+    handleLoadUsers(currentPage, searchTerm);
+  }, [currentPage, searchTerm]);
+
   // TODO: Handle urgent updates (search input)
   const handleSearchChange = (value: string) => {
     // TODO: Update search term immediately
@@ -85,6 +89,9 @@ export function UserManagement() {
       // TODO: Add loading state
 
       const result = await fetchUsers(page, search);
+      setUsers(result.users);
+      setTotalPages(result.totalPages);
+      // setTota
 
       // TODO: Update users and pagination
     } catch (err) {
@@ -95,6 +102,9 @@ export function UserManagement() {
 
   const handleLoadUsers = (page: number, search: string) => {
     // TODO: Use startTransition for non-urgent updates
+    startTransition(() => {
+      loadUsers(page, search);
+    });
   };
 
   // TODO: Load users on mount and when dependencies change
@@ -200,7 +210,10 @@ export function UserManagement() {
             </div>
           ) : (
             // TODO: Render user cards
-            <div>User cards will be rendered here</div>
+            <>
+              <div>User cards will be rendered here</div>
+              <p>{JSON.stringify(users, null, 2)}</p>
+            </>
           )}
         </div>
       </div>
