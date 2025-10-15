@@ -8,6 +8,7 @@ import { router } from "./routes";
 
 import { store } from "./store";
 import { AuthProvider } from "./shared/components/Auth/AuthContext";
+import { SampleComponent } from "./shared/components/SampleComponent";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,16 +21,17 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
+    <SampleComponent />
     // <Provider store={store}>
-    <div className="p-4">
-      {/* <AuthContext> */}
+    // <div className="p-4">
+    //   {/* <AuthContext> */}
 
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ToastContainer />
-        <ReactQueryDevtools initialIsOpen={true} />
-      </QueryClientProvider>
-    </div>
+    //   <QueryClientProvider client={queryClient}>
+    //     <RouterProvider router={router} />
+    //     <ToastContainer />
+    //     <ReactQueryDevtools initialIsOpen={true} />
+    //   </QueryClientProvider>
+    // </div>
     // </Provider>
   );
 }

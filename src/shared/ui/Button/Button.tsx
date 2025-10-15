@@ -32,25 +32,23 @@ type Props = {
 // export const Button = () => {}
 
 // export const Button = memo(
-export const Button =
-  () =>
-  ({
-    children, // Text (string), <span>Text</span> -> React.ReactNode -> Object (span element with children Text)
-    color = "clouds",
-    bgColor = "midnightBlue",
-    // onClick,
-    ...rest
-  }: Props) => {
-    const styles = {
-      color: palette[color],
-      backgroundColor: palette[bgColor],
-    };
-    return (
-      <button style={styles} className="p-2 rounded-md" {...rest}>
-        {children}
-      </button>
-    );
+export const Button = ({
+  children, // Text (string), <span>Text</span> -> React.ReactNode -> Object (span element with children Text)
+  color = "clouds",
+  bgColor = "midnightBlue",
+  // onClick,
+  ...rest
+}: Props) => {
+  const styles = {
+    color: palette[color],
+    backgroundColor: palette[bgColor],
   };
+  return (
+    <button style={styles} className="p-2 rounded-md" {...rest}>
+      {children}
+    </button>
+  );
+};
 // , (props) => label === 'yes' ? true : false
 // );
 
