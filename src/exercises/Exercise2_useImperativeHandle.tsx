@@ -27,6 +27,26 @@ const FormField = forwardRef<FormFieldHandle, FormFieldProps>(
 
     // TODO: Implement useImperativeHandle
     // Expose methods: focus, clear, validate, getValue, setValue
+    useImperativeHandle(ref, () => ({
+      focus: () => {
+        inputRef.current?.focus();
+      },
+      clear: () => {
+        console.log("inside clear");
+        setValue("");
+        setErrorMessage("");
+        setIsValid(true);
+      },
+      validate: () => {
+        return true;
+      },
+      getValue: () => {
+        return value;
+      },
+      setValue: (newValue: string) => {
+        setValue(newValue);
+      },
+    }));
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = e.target.value;
@@ -61,7 +81,25 @@ FormField.displayName = "FormField";
 
 export function CustomForm() {
   // TODO: Create refs for form fields
+  const emailFieldRef = useRef<FormFieldHandle>(null);
+  const nameFieldRef = useRef<FormFieldHandle>(null);
+  const phoneFieldRef = useRef<FormFieldHandle>(null);
   // TODO: Add form validation and submission logic
+
+  const focusFirstHandler = () => {
+    emailFieldRef.current?.focus();
+    // emailFieldRef.current?.setValue();
+    // emailFieldRef.current?.getValue();
+  };
+
+  const clearAllHandler = () => {
+    emailFieldRef.current?.clear();
+
+    console.log(emailFieldRef.current);
+
+    nameFieldRef.current?.clear();
+    phoneFieldRef.current?.clear();
+  };
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
@@ -69,6 +107,9 @@ export function CustomForm() {
 
       <form className="space-y-6">
         {/* TODO: Add form fields with refs */}
+        <FormField ref={emailFieldRef} label="E-mail" />
+        <FormField ref={nameFieldRef} label="Name" />
+        <FormField ref={phoneFieldRef} label="Phone" />
 
         {/* TODO: Add form controls */}
         <div className="flex gap-4">
@@ -80,12 +121,14 @@ export function CustomForm() {
           </button>
           <button
             type="button"
+            onClick={clearAllHandler}
             className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
           >
             Clear All
           </button>
           <button
             type="button"
+            onClick={focusFirstHandler}
             className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
           >
             Focus First
