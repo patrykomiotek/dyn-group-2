@@ -102,8 +102,16 @@ export function UserManagement() {
 
   const handleLoadUsers = (page: number, search: string) => {
     // TODO: Use startTransition for non-urgent updates
-    startTransition(() => {
-      loadUsers(page, search);
+    // startTransition(() => {
+    //   loadUsers(page, search);
+    //   // second action
+    //   // third actions
+    // });
+
+    startTransition(async () => {
+      await loadUsers(page, search); // services/loadUsers -> axios/fetch
+      // second action
+      // third actions
     });
   };
 
