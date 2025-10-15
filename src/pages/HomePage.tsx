@@ -24,11 +24,11 @@ export function HomePage() {
       {/* <ValueCollector /> */}
       {/* <DataTable /> */}
       {/* <PostsList /> */}
-      <AuthInfo />
+      {/* <AuthInfo /> */}
       {/* <Stepper /> */}
-      <ErrorBoundary fallback={<p>Stepper error</p>}>
+      {/* <ErrorBoundary fallback={<p>Stepper error</p>}>
         <Stepper />
-      </ErrorBoundary>
+      </ErrorBoundary> */}
       {/*<ViewPort />
       <Counter />*/}
     </div>

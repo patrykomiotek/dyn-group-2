@@ -9,9 +9,10 @@ import { toast } from "react-toastify";
 
 type Props = {
   data: ProductDto[];
+  sort?: "asc" | "desc";
 };
 
-export function ProductList({ data }: Props) {
+export function ProductList({ data, sort }: Props) {
   const addNewItem = useCombinedStore((state) => state.addNewItem);
   const deleteMutation = useDeleteProduct();
   // const dispatch = useAppDispatch();

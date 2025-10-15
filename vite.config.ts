@@ -14,7 +14,23 @@ const viteConfig = defineViteConfig({
     tsconfigPaths(),
     react({
       babel: {
-        plugins: ["babel-plugin-react-compiler"],
+        // overrides: [
+        //   {
+        //     test: [
+        //       "./src/modern/**/*.{js,jsx,ts,tsx}",
+        //       "./src/features/**/*.{js,jsx,ts,tsx}",
+        //     ],
+        //     plugins: ["babel-plugin-react-compiler"],
+        //   },
+        // ],
+        plugins: [
+          [
+            "babel-plugin-react-compiler",
+            {
+              compilationMode: "annotation",
+            },
+          ],
+        ],
       },
     }),
   ],

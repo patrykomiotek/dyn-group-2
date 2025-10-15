@@ -45,27 +45,32 @@ const reducer = (state: State, action: Action) => {
 };
 
 export const Stepper = () => {
+  "use memo";
+  // "use no memo"
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const decrease = useCallback(
-    () => dispatch({ type: ActionType.DECREMENT }),
-    []
-  );
-  const increase = useCallback(
-    () => dispatch({ type: ActionType.INCREMENT }),
-    []
-  );
+  // const decrease = useCallback(
+  //   () => dispatch({ type: ActionType.DECREMENT }),
+  //   []
+  // );
+  // const increase = useCallback(
+  //   () => dispatch({ type: ActionType.INCREMENT }),
+  //   []
+  // );
+  const decrease = () => dispatch({ type: ActionType.DECREMENT });
+  const increase = () => dispatch({ type: ActionType.INCREMENT });
 
-  const handleKeyboardDown: KeyboardEventHandler<HTMLInputElement> =
-    useCallback((event) => {
-      // throw new Error("Stepper Error");
+  const handleKeyboardDown: KeyboardEventHandler<HTMLInputElement> = (
+    event
+  ) => {
+    // throw new Error("Stepper Error");
 
-      const key = event.key;
-      const value = parseInt(event.currentTarget.value, 10);
-      if (key === "Enter") {
-        dispatch({ type: ActionType.SET, payload: value });
-      }
-    }, []);
+    const key = event.key;
+    const value = parseInt(event.currentTarget.value, 10);
+    if (key === "Enter") {
+      dispatch({ type: ActionType.SET, payload: value });
+    }
+  };
 
   // throw new Error("Stepper Error");
 

@@ -4,7 +4,7 @@
 //   PETER_RIVER, // 1
 // }
 
-import { type ComponentProps, memo } from "react";
+import { type ComponentProps } from "react";
 
 const palette = {
   emerald: "#2ecc71",
