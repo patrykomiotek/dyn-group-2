@@ -15,6 +15,7 @@ import { StepperRedux } from "@/shared/components/StepperRedux";
 import { ValueCollector } from "@/shared/components/ValueCollector";
 import { ResponsiveDashboard } from "exercises/Exercise1_useLayoutEffect";
 import { CustomForm } from "exercises/Exercise2_useImperativeHandle";
+import { UserManagement } from "exercises/Exercise3_useTransition";
 
 export function HomePage() {
   const handleSubmit = (data) => {
@@ -24,7 +25,8 @@ export function HomePage() {
   return (
     <div className="space-y-4">
       <h1 className="text-3xl">Home Page</h1>
-      <CustomForm />
+      <UserManagement />
+      {/* <CustomForm /> */}
       {/* <FormRefs onSubmit={handleSubmit} /> */}
       {/* <ResponsiveDashboard /> */}
       {/* <Stepper /> */}
