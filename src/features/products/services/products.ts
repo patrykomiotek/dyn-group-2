@@ -7,8 +7,9 @@ export const fetchProducts = async () => {
 
   return response.data.records;
 
-  // fetch('/products')
-  // then(response => response.json())
+  // return fetch("/products").then((response) => {
+  //   return response.json();
+  // });
 };
 
 export const fetchProduct = async (id: string | undefined) => {

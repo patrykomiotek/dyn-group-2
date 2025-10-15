@@ -10,11 +10,11 @@ export function Layout() {
     <div>
       <Menu />
 
-      {/* <ErrorBoundary fallback={<p>Oh not sth went wrong!</p>}> */}
-      <AuthProvider>
-        <Outlet />
-      </AuthProvider>
-      {/* </ErrorBoundary> */}
+      <ErrorBoundary fallback={<p>Oh not sth went wrong!</p>}>
+        <AuthProvider>
+          <Outlet />
+        </AuthProvider>
+      </ErrorBoundary>
 
       <Footer />
     </div>
