@@ -12,12 +12,14 @@ import { ErrorBoundary } from "@/shared/components/ErrorBoundary/ErrorBoundary";
 import { Stepper } from "@/shared/components/Stepper";
 import { StepperRedux } from "@/shared/components/StepperRedux";
 import { ValueCollector } from "@/shared/components/ValueCollector";
+import { ResponsiveDashboard } from "exercises/Exercise_useLayoutEffect";
 
 export function HomePage() {
   return (
     <div className="space-y-4">
       <h1 className="text-3xl">Home Page</h1>
-      <Stepper />
+      <ResponsiveDashboard />
+      {/* <Stepper /> */}
       {/* <EmployeeList /> */}
       {/* <Books /> */}
       {/* <StepperRedux /> */}
